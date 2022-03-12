@@ -53,8 +53,14 @@ string transition(string ret, int a, int b){
 }
 
 string ariel::mat(int a, int b, char x, char y){
+    if ((int)x <= 32 || (int)y <= 32 || (int)x >= 127 || (int)y >= 127){
+        throw std::invalid_argument("Bad character.");
+    }
+    if(a <=0 || b <= 0){
+        throw std::invalid_argument("rows or collumns cant be zero or negative.");
+    }
     if(a % 2 == 0 || b % 2 == 0){
-        throw std::invalid_argument("Mat size is always odd");
+        throw std::invalid_argument("Mat size is always odd.");
     }
     if (a == 1 && b == 1){
         return string(1,x);
