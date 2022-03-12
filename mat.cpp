@@ -1,9 +1,10 @@
 # include <cstdlib>
 # include <iostream>
 # include "mat.hpp"
-
 using namespace std;
 
+constexpr int START = 33;
+constexpr int END = 127;
 char swapChar(char x, char y, char cur){
     return cur == x ? y : x;
 }
@@ -53,7 +54,7 @@ string transition(string ret, int a, int b){
 }
 
 string ariel::mat(int a, int b, char x, char y){
-    if ((int)x <= 32 || (int)y <= 32 || (int)x >= 127 || (int)y >= 127){
+    if ((int)x < START || (int)y < START || (int)x >= END  || (int)y >= END){
         throw std::invalid_argument("Bad character.");
     }
     if(a <=0 || b <= 0){
